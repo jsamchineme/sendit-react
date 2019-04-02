@@ -1,5 +1,5 @@
 {
-  "name": "send-it",
+  "name": "sendit-react",
   "version": "1.0.0",
   "description": "SendIT is a courier service that helps users deliver parcels to different destinations. SendIT provides courier quotes based on weight categories.",
   "scripts": {
@@ -7,6 +7,8 @@
     "start:dev": "webpack-dev-server --mode development",
     "webpack": "webpack",
     "build": "set NODE_ENV=production&& webpack --mode production",
+    "test": "jest",
+    "coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls",
     "heroku-postbuild": "npm run build"
   },
   "engines": {
@@ -21,6 +23,15 @@
   "bugs": {
     "url": "https://github.com/jsamchineme/send-it/issues"
   },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "setupFiles": [
+      "<rootDir>/enzyme.config.js"
+    ],
+    "collectCoverage": true
+  },
   "dependencies": {
     "moment": "^2.24.0",
     "react": "^16.8.4",
@@ -34,12 +45,18 @@
     "@babel/plugin-transform-runtime": "^7.4.0",
     "@babel/preset-env": "^7.4.2",
     "@babel/preset-react": "^7.0.0",
+    "babel-jest": "^24.5.0",
     "babel-loader": "^8.0.5",
     "clean-webpack-plugin": "^2.0.1",
     "copy-webpack-plugin": "^5.0.2",
+    "coveralls": "^3.0.3",
     "dotenv": "^7.0.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.11.2",
+    "enzyme-to-json": "^3.3.5",
     "express": "^4.16.4",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.5.0",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1"

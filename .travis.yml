@@ -1,0 +1,24 @@
+language: node_js
+node_js:
+- stable
+addons:
+  code_climate:
+    repo_token:
+      secure: lKek2J+eQucrc33iLEA8JmE6Ei94bzuVBAIKM7glgPDd01Vz+qWVUIOvGFMpmteWIiqLeH0WgavgVfy/Sx0NaNSoMYwJN2yh2NUZrv352H5XiJCvStVcWapeUKVRhjbGT1c4I/4vPDJXo0N1TSvrV/ckMzaicEJHdq3EdkJe4NwCp7XxpXR2ZTvw83gfxfAAA0KDA/miQ/0kMdqksqKcKwRbiJIRGypIAyepJfZHQWH7E3XDvZIhfSq7WbTfmRb2/cpz1b4ov7An35mWPKiKgEsThUnbZZ29tvql0hnCsdQ/4Vbv2ERGwDyPVBXRy2OV4T4CoThL8AgQyzlmw0PDjkgDYyvuqVlZCfWAh/tYnLRiYlKhck0Uow62pYBHeLaqeTdtRmJiiE/KLKPnNdCxkrPnF7cx2VRjte/YKPt78dM3A2eHzg9Rgt2M0tPKUPMY6SZeXWkcm5rg9YPScxKB6I1TRfo+pZACqgyFBTtscv/Vwb5+xNG+/r2g2DlyGyG6squEr+JdahVf74rZo2UzS29pkSDL/sBSmcrlcoyVxtYjqbNK693JycP1mUZLmMBYRawsXdyVsbkB5SEVXsHhupPaetlcU8ea1YGCLPDrfyfqHfVk6wqS/XJDUvaZfsT2bf3aE3y+/O9RgvCe3HiuMfiFQ3JPGpG+IJ/ZonqKTSU=
+cache:
+  directories:
+  - node_modules
+install:
+- npm install
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - "./cc-test-reporter before-build"
+script:
+  - npm test
+after_success:
+  - npm run coveralls
+  - "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
+env:
+  global:
+    secure: lKek2J+eQucrc33iLEA8JmE6Ei94bzuVBAIKM7glgPDd01Vz+qWVUIOvGFMpmteWIiqLeH0WgavgVfy/Sx0NaNSoMYwJN2yh2NUZrv352H5XiJCvStVcWapeUKVRhjbGT1c4I/4vPDJXo0N1TSvrV/ckMzaicEJHdq3EdkJe4NwCp7XxpXR2ZTvw83gfxfAAA0KDA/miQ/0kMdqksqKcKwRbiJIRGypIAyepJfZHQWH7E3XDvZIhfSq7WbTfmRb2/cpz1b4ov7An35mWPKiKgEsThUnbZZ29tvql0hnCsdQ/4Vbv2ERGwDyPVBXRy2OV4T4CoThL8AgQyzlmw0PDjkgDYyvuqVlZCfWAh/tYnLRiYlKhck0Uow62pYBHeLaqeTdtRmJiiE/KLKPnNdCxkrPnF7cx2VRjte/YKPt78dM3A2eHzg9Rgt2M0tPKUPMY6SZeXWkcm5rg9YPScxKB6I1TRfo+pZACqgyFBTtscv/Vwb5+xNG+/r2g2DlyGyG6squEr+JdahVf74rZo2UzS29pkSDL/sBSmcrlcoyVxtYjqbNK693JycP1mUZLmMBYRawsXdyVsbkB5SEVXsHhupPaetlcU8ea1YGCLPDrfyfqHfVk6wqS/XJDUvaZfsT2bf3aE3y+/O9RgvCe3HiuMfiFQ3JPGpG+IJ/ZonqKTSU=
