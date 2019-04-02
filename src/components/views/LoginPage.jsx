@@ -1,48 +1,37 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import LoginForm from '../forms/LoginForm';
+import { connect } from 'react-redux';
+import { userLogin } from '../../redux/actions/user';
 
-const LoginPage = () => {
+const LoginPage = ({
+  form: { loginForm },
+  userLogin,
+  history,
+  serverErrorMessage
+}) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { values } = loginForm;
+    const onSuccess = () => {
+      history.push('/dashboard');
+    }
+    userLogin(values, onSuccess);
+  }
+
   return (
     <div className="wrapper">
       <section className="page-content">
         <section className="mast no-bg paddless">
-          <a href="index.html" className="logo-text-group">
+          <NavLink to='/' className="logo-text-group">
             <div className="logo"><img src="assets/img/sendit-pickup-ondemand.svg" alt="sendit-logo" /></div>
             <div className="text">Send<span>IT</span></div>
-          </a>
+          </NavLink>
         </section>
         <div className="login-box">
-          <form action="">
-            <div className="form-header">
-              Login
-            </div>
-            <div className="form-body">
-              <div className="input-group transparent-box">
-                <label htmlFor="email">Email</label>   
-                <input type="email" placeholder="you@email.com" id="email" required />
-              </div>
-              <div className="input-group transparent-box">
-                <label htmlFor="password">Password</label>
-                <input type="password" placeholder="your password" id="password" required /> 
-              </div>
-              <div className="input-footer" />
-              <div className="row text-center">
-                <div className="column">
-                  <button className="btn submit">Login</button>
-                </div>
-                <div className="actions column text-center">
-                  <div className="v-gap-2" />
-                  <div className>
-                    <NavLink to="/signup">Sign up</NavLink> 
-                    <span style={{marginRight: 10, display: 'inline-block'}} />
-                    <NavLink to="/forgot-password">Forgot password</NavLink>
-                    <span style={{marginRight: 10, display: 'inline-block'}} />
-                    <NavLink to="/admin-login">Admin Login</NavLink>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </form>
+          <LoginForm
+            serverErrorMessage={serverErrorMessage} 
+            handleSubmit={handleSubmit} />
         </div>
       </section>
       <div className="page-background">
@@ -53,4 +42,15 @@ const LoginPage = () => {
   );
 }
 
-export default LoginPage;
+const mapStateToProps = state => ({
+  form: state.form,
+  serverErrorMessage: state.serverErrors.userLogin || undefined
+});
+
+const mapDispatchToProps = dispatch => {
+  return {
+    userLogin: (data, onSuccess) => dispatch(userLogin(data, onSuccess))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
