@@ -40,9 +40,7 @@ module.exports = {
   devServer: {
     contentBase: './dist',
     port: 3001,
-    historyApiFallback: {
-      index: 'index.html'
-    }
+    historyApiFallback: true
   },
   module: {
     rules: [
