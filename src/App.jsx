@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import LandingPage from './components/views/LandingPage';
 import LoginPage from './components/views/LoginPage';
 import SignupPage from './components/views/SignupPage';
+import SignupWelcome from './components/views/SignupWelcome';
 import configureStore from './redux/configureStore';
 
 const store = configureStore();
@@ -15,7 +16,8 @@ const App = () => {
         <Switch>
           <Route exact path='/' component={LandingPage} />
           <Route path='/login' component={LoginPage} />
-          <Route path='/signup' component={SignupPage} />
+          <Route exact path='/signup' component={SignupPage} />
+          <Route path='/signup/welcome' component={SignupWelcome} />
         </Switch>
       </BrowserRouter>
     </Provider>

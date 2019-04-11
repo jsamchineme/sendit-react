@@ -25,11 +25,14 @@ const renderField = ({
 
 
 const SignupForm = props => {
-  const { handleSubmit, pristine, reset, submitting } = props
+  const { handleSubmit, serverErrorMessage, pristine, reset, submitting } = props;
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="form-header">
-        Login
+        Signup
+        {serverErrorMessage &&
+        <div id="server-error-box" className="error-box active">{serverErrorMessage}</div>}
       </div>
       <div className="form-body">
         <div className="input-group transparent-box">
@@ -87,5 +90,5 @@ const SignupForm = props => {
 }
 
 export default reduxForm({
-  form: 'SignupForm'
+  form: 'signupForm'
 })(SignupForm)

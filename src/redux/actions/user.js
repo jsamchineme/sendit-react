@@ -2,6 +2,9 @@ import {
   USER_LOGIN_REQUEST,
   USER_LOGIN_FAILURE,
   USER_LOGIN_SUCCESS,
+  USER_SIGNUP_REQUEST,
+  USER_SIGNUP_FAILURE,
+  USER_SIGNUP_SUCCESS,
   SHOW_SERVER_ERROR,
   CLEAR_SERVER_ERROR
 } from '../actionTypes';
@@ -48,6 +51,39 @@ export const userLogin = (data, successAction = _successAction, failAction = _fa
     dispatch({
       type: SHOW_SERVER_ERROR,
       payload: { process: 'userLogin', message: error.message }
+    });
+    failAction();
+  }
+}
+
+export const userSignup = (data, successAction = _successAction, failAction = _failAction) => async dispatch => {
+
+  dispatch({
+    type: USER_SIGNUP_REQUEST
+  });
+
+  try {
+    const response = await api.userSignup(data);
+    const authUser = response.data;
+    persistAuthUser(authUser);
+
+    dispatch({
+      type: USER_SIGNUP_SUCCESS,
+      payload: response.data
+    });
+    dispatch({
+      type: CLEAR_SERVER_ERROR,
+      payload: { process: 'userSignup' }
+    });
+    successAction();
+  } catch(error) {
+    dispatch({
+      type: USER_SIGNUP_FAILURE,
+      payload: error.message
+    });
+    dispatch({
+      type: SHOW_SERVER_ERROR,
+      payload: { process: 'userSignup', message: error.message }
     });
     failAction();
   }
