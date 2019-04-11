@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import OrderCreateForm from '../forms/OrderCreateForm';
 import { createOrder } from '../../redux/actions/parcel';
-// 
 
 class MakeOrder extends Component {
 
@@ -17,7 +16,7 @@ class MakeOrder extends Component {
 
     const { values } = orderCreate;
     const onSuccess = (data) => {
-      history.push(`/orders/${data.id}`);
+      history.push(`/dashboard/orders/${data.id}`);
     }
     createOrder(values, onSuccess);
   }
