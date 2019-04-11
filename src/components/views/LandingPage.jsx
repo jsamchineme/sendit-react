@@ -8,7 +8,7 @@ const LandingPage = () => {
         <div className='mast-banner' style={{backgroundImage: 'url(assets/img/sending-package.jpg)'}}>
           <section className="mast theme-dark">
             <NavLink to="/" className='logo-text-group'>
-              <div className="logo"><img src="assets/img/sendit-pickup-ondemand.svg" alt="sendit-logo" /></div>
+              <div className="logo"><img src="/assets/img/sendit-pickup-ondemand.svg" alt="sendit-logo" /></div>
               <div className="text">Send<span>IT</span></div>
             </NavLink>
           </section>
@@ -16,7 +16,7 @@ const LandingPage = () => {
             <div className="container">
               <div className="left-content">
                 <div className="image">
-                  <img src="assets/img/package-landing-image.jpg" alt="sendit landing introduction image" />
+                  <img src="/assets/img/package-landing-image.jpg" alt="sendit landing introduction image" />
                 </div>
               </div>
               <div className="right-content">
@@ -35,15 +35,15 @@ const LandingPage = () => {
         <section className='value-props'>
           <div className="items row auto-container">
             <div className="item column col-4">
-              <div className="image"><img src="assets/img/sendit-pickup-ondemand.svg" alt="" /></div>
+              <div className="image"><img src="/assets/img/sendit-pickup-ondemand.svg" alt="" /></div>
               <div className="text">Pickup On Demand</div>
             </div>
             <div className="item column col-4">
-              <div className="image"><img src="assets/img/sendit-timely-delivery.svg" alt="" /></div>
+              <div className="image"><img src="/assets/img/sendit-timely-delivery.svg" alt="" /></div>
               <div className="text">Timely Delivery</div>
             </div>
             <div className="item column col-4">
-              <div className="image"><img src="assets/img/sendit-track-package.svg" alt="" /></div>
+              <div className="image"><img src="/assets/img/sendit-track-package.svg" alt="" /></div>
               <div className="text">Track Order</div>
             </div>
           </div>
