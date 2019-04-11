@@ -24,7 +24,7 @@ const SignupPage = ({
       <section className="page-content">
         <section className="mast no-bg paddless">
           <NavLink to='/' className="logo-text-group">
-            <div className="logo"><img src="assets/img/sendit-pickup-ondemand.svg" alt="sendit-logo" /></div>
+            <div className="logo"><img src="/assets/img/sendit-pickup-ondemand.svg" alt="sendit-logo" /></div>
             <div className="text">Send<span>IT</span></div>
           </NavLink>
         </section>
