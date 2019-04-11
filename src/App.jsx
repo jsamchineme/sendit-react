@@ -5,6 +5,7 @@ import LandingPage from './components/views/LandingPage';
 import LoginPage from './components/views/LoginPage';
 import SignupPage from './components/views/SignupPage';
 import SignupWelcome from './components/views/SignupWelcome';
+import Logout from './components/views/Logout';
 import Dashboard from './components/views/Dashboard';
 import configureStore from './redux/configureStore';
 
@@ -20,6 +21,7 @@ const App = () => {
           <Route exact path='/signup' component={SignupPage} />
           <Route path='/signup/welcome' component={SignupWelcome} />
           <Route path='/dashboard' component={Dashboard} />
+          <Route path='/logout' component={Logout} />
         </Switch>
       </BrowserRouter>
     </Provider>

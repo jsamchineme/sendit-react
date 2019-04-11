@@ -6,7 +6,8 @@ import {
   USER_SIGNUP_FAILURE,
   USER_SIGNUP_SUCCESS,
   SHOW_SERVER_ERROR,
-  CLEAR_SERVER_ERROR
+  CLEAR_SERVER_ERROR,
+  USER_LOGOUT
 } from '../actionTypes';
 import * as api from '../../utils/apiRequests';
 import { persistAuthUser } from '../../utils/localStorage';
@@ -54,6 +55,12 @@ export const userLogin = (data, successAction = _successAction, failAction = _fa
     });
     failAction();
   }
+}
+
+export const userLogout = (data) => dispatch => {
+  dispatch({
+    type: USER_LOGOUT
+  });
 }
 
 export const userSignup = (data, successAction = _successAction, failAction = _failAction) => async dispatch => {

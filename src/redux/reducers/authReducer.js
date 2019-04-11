@@ -1,4 +1,4 @@
-import { USER_LOGIN_SUCCESS } from '../actionTypes';
+import { USER_LOGIN_SUCCESS, USER_LOGOUT, } from '../actionTypes';
 
 const initialState = {
   isProcessing: false,
@@ -12,6 +12,12 @@ const authReducer = (state = initialState, action) => {
         ...state,
         isProcessing: false,
         isAuthenticated: true
+      };
+     case USER_LOGOUT:
+      return {
+        ...state,
+        isProcessing: false,
+        isAuthenticated: false
       };
     default:
       return state;
