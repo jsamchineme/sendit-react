@@ -5,7 +5,7 @@ import SignupForm from '../forms/SignupForm';
 import { userSignup } from '../../redux/actions/user';
 
 
-const SignupPage = ({
+export const SignupPage = ({
   form: { signupForm },
   userSignup,
   history,
@@ -31,7 +31,7 @@ const SignupPage = ({
         <div className="login-box">
           <SignupForm 
             serverErrorMessage={serverErrorMessage} 
-            handleSubmit={handleSubmit} />/>
+            handleSubmit={handleSubmit} />
         </div>
       </section>
       <div className="page-background">

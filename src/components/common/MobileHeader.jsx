@@ -9,7 +9,7 @@ const MobileHeader = ({
   mobileMenuOpen,
   toggleMobileMenu,
 }) => {
-  const authUser = retrieveAuthUser();
+  const authUser = retrieveAuthUser() || {};
   let visibilityStatus = mobileMenuOpen ? ' active' : ' inactive';
 
   if(authUser.isAdmin) {

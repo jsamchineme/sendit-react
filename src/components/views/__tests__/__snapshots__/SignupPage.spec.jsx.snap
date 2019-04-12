@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tests for login page should render the login page 1`] = `
+exports[`Tests for signup page should render the signup page 1`] = `
 <div
   className="wrapper"
 >
@@ -39,7 +39,7 @@ exports[`Tests for login page should render the login page 1`] = `
         destroyOnUnmount={true}
         enableReinitialize={false}
         forceUnregisterOnUnmount={false}
-        form="loginForm"
+        form="signupForm"
         getFormState={[Function]}
         handleSubmit={[Function]}
         keepDirtyOnReinitialize={false}

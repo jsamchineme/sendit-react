@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tests for login form should render the login form 1`] = `
+exports[`Tests for signup form should render the signup form 1`] = `
 <form
   onSubmit={[MockFunction]}
 >
   <div
     className="form-header"
   >
-    Login
+    Signup
   </div>
   <div
     className="form-body"
@@ -17,7 +17,31 @@ exports[`Tests for login form should render the login form 1`] = `
     >
       <Field
         component={[Function]}
-        label="email"
+        label="Firstname"
+        name="firstname"
+        type="firstname"
+        validate={
+          Array [
+            [Function],
+            [Function],
+          ]
+        }
+      />
+      <Field
+        component={[Function]}
+        label="Lastname"
+        name="lastname"
+        type="lastname"
+        validate={
+          Array [
+            [Function],
+            [Function],
+          ]
+        }
+      />
+      <Field
+        component={[Function]}
+        label="your email"
         name="email"
         type="email"
         validate={
@@ -31,7 +55,20 @@ exports[`Tests for login form should render the login form 1`] = `
       />
       <Field
         component={[Function]}
-        label="password"
+        label="username"
+        name="username"
+        type="username"
+        validate={
+          Array [
+            [Function],
+            [Function],
+            [Function],
+          ]
+        }
+      />
+      <Field
+        component={[Function]}
+        label="secure password"
         name="password"
         type="password"
         validate={
@@ -55,7 +92,7 @@ exports[`Tests for login form should render the login form 1`] = `
         <button
           className="btn submit"
         >
-          Login
+          Signup
         </button>
       </div>
       <div
@@ -66,22 +103,9 @@ exports[`Tests for login form should render the login form 1`] = `
         />
         <div>
           <NavLink
-            to="/signup"
+            to="/login"
           >
-            Signup
-          </NavLink>
-          <span
-            style={
-              Object {
-                "display": "inline-block",
-                "marginRight": 10,
-              }
-            }
-          />
-          <NavLink
-            to="/forgot-password"
-          >
-            Forgot Password
+            Login
           </NavLink>
         </div>
       </div>

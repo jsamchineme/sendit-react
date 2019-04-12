@@ -24,7 +24,7 @@ const renderField = ({
 }
 
 
-const SignupForm = props => {
+export const SignupForm = props => {
   const { handleSubmit, serverErrorMessage, pristine, reset, submitting } = props;
 
   return (

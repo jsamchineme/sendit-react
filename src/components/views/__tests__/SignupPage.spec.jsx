@@ -2,13 +2,13 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
-import { LoginPage } from '../LoginPage';
+import { SignupPage } from '../SignupPage';
 import configureStore from '../../../redux/configureStore';
 
 const store = configureStore();
 
-describe('Tests for login page', () => {
-  it('should render the login page', () => {
+describe('Tests for signup page', () => {
+  it('should render the signup page', () => {
     const props = {
       form: {
         loginForm: {
@@ -43,10 +43,11 @@ describe('Tests for login page', () => {
       },
     }
     const subject = (
-      <LoginPage {...props} />
+      <SignupPage {...props} />
     );
+
     const wrapper = shallow(subject);
-  
+
     expect(wrapper).toMatchSnapshot();
   });
 });

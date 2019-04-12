@@ -36,6 +36,7 @@ class Dashboard extends Component {
                 <div className="main-content">
                   <div className="container">
                     <Switch>
+                      <Route exact path='/dashboard' component={MakeOrder} />
                       <Route path='/dashboard/make-order' component={MakeOrder} />
                       <Route exact path='/dashboard/orders/:parcelId' component={ParcelEntry} />
                       <Route exact path='/dashboard/orders/edit/:parcelId' component={ParcelEntryEdit} />

@@ -1,0 +1,40 @@
+const mockArticles = [
+  {
+    contactEmail: "jsamchineme@gmail.com",
+    contactPhone: "8134876924",
+    cost: "N10,000",
+    currentLocation: "5 Broad Street, Victoria Island, Lagos",
+    deliveredOn: "2019-01-09T18:15:53.594Z",
+    description: "sample description",
+    from: "Ikeja City Mall, Obafemi Awolowo Way, Ikeja",
+    id: 12,
+    placedBy: 2,
+    presentMapPointer: null,
+    scope: undefined,
+    sentOn: "2019-01-09T18:15:53.594Z",
+    status: "cancelled",
+    to: "Plot 24b, 5th Floor, Ggbemisola House, Adjacent CLAM Avenue, Omola Phase 1, Ikeja",
+    weight: "1",
+    weightmetric: "kg",
+  },
+  {
+    contactEmail: "jsamchineme@gmail.com",
+    contactPhone: "8134876924",
+    cost: "N10,000",
+    currentLocation: "5 Broad Street, Victoria Island, Lagos",
+    deliveredOn: "2019-01-09T18:15:53.594Z",
+    description: "sample description",
+    from: "Ikeja City Mall, Obafemi Awolowo Way, Ikeja",
+    id: 12,
+    placedBy: 2,
+    presentMapPointer: null,
+    scope: undefined,
+    sentOn: "2019-01-09T18:15:53.594Z",
+    status: "cancelled",
+    to: "Plot 24b, 5th Floor, Ggbemisola House, Adjacent CLAM Avenue, Omola Phase 1, Ikeja",
+    weight: "1",
+    weightmetric: "kg",
+  }
+];
+
+export default mockArticles;
