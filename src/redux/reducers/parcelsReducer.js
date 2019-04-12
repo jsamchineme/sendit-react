@@ -1,4 +1,8 @@
-import { PARCEL_CREATE_SUCCESS, FETCH_PARCEL_SUCCESS } from '../actionTypes';
+import { 
+  PARCEL_CREATE_SUCCESS, 
+  FETCH_PARCEL_SUCCESS, 
+  FETCH_USER_PARCELS_SUCCESS
+} from '../actionTypes';
 
 
 const parcelsReducer = (state = [], action) => {
@@ -7,6 +11,8 @@ const parcelsReducer = (state = [], action) => {
       return [...state, action.payload];
     case FETCH_PARCEL_SUCCESS:
       return [...state, action.payload];
+    case FETCH_USER_PARCELS_SUCCESS:
+      return [...state, ...action.payload];
     default:
       return state;
   }

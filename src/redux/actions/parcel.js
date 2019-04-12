@@ -9,7 +9,10 @@ import {
   CLEAR_SERVER_ERROR,
   DESTINATION_EDIT_FAILURE,
   DESTINATION_EDIT_REQUEST,
-  DESTINATION_EDIT_SUCCESS
+  DESTINATION_EDIT_SUCCESS,
+  FETCH_USER_PARCELS_REQUEST,
+  FETCH_USER_PARCELS_SUCCESS,
+  FETCH_USER_PARCELS_FAILURE,
 } from '../actionTypes';
 import * as api from '../../utils/apiRequests';
 import { retrieveAuthUser } from '../../utils/localStorage';
@@ -26,6 +29,7 @@ export const createOrder = (data, successAction = _successAction, failAction = _
 
   try {
     const authUser = retrieveAuthUser();
+    toast.show({ message: 'Request processing', autoHide: false, type: 'pending'});
     const response = await api.createOrder(data, authUser.token);
 
     dispatch({
@@ -37,6 +41,7 @@ export const createOrder = (data, successAction = _successAction, failAction = _
       payload: { process: 'orderCreate' }
     });
     successAction(response.data);
+    toast.show({ message: 'Request completed', type: 'success'});
   } catch(error) {
     dispatch({
       type: PARCEL_CREATE_FAILURE,
@@ -85,7 +90,6 @@ export const editDestination = (data, parcelId, successAction = _successAction, 
 
   try {
     const authUser = retrieveAuthUser();
-    console.log({toast});
     toast.show({ message: 'Request processing', autoHide: false, type: 'pending'});
 
     const response = await api.editDestination(data, parcelId, authUser.token);
@@ -102,5 +106,36 @@ export const editDestination = (data, parcelId, successAction = _successAction, 
       payload: error.message
     });
     failAction();
+  }
+}
+
+export const getAllUserParcels = () => async dispatch => {
+
+  dispatch({
+    type: FETCH_USER_PARCELS_REQUEST
+  });
+
+  const authUser = retrieveAuthUser();
+  let token = 'xxx';
+  if (authUser !== null) 
+    token = authUser.token 
+
+  let data = {
+    token,
+    userId: authUser.id
+  };
+
+  try {
+    const response = await api.getUserParcels(data);
+
+    dispatch({
+      type: FETCH_USER_PARCELS_SUCCESS,
+      payload: response.data
+    });
+  } catch(error) {
+    dispatch({
+      type: FETCH_USER_PARCELS_FAILURE,
+      payload: error.message
+    });
   }
 }

@@ -6,22 +6,15 @@ import MainPageHeader from '../common/MainPageHeader';
 import ParcelEntry from './ParcelEntry';
 import ParcelEntryEdit from './ParcelEntryEdit';
 import MakeOrder from './MakeOrder';
-import OrdersList from './OrdersList';
 import Sidebar from '../common/Sidebar';
 import { toggleMobileMenu } from '../../redux/actions/elements';
 import Map from './Map';
 import ConfirmModalContainer from '../common/ConfirmModal';
-import { getAllUserParcels } from '../../redux/actions/parcel';
 
 window.initMap = () => Map.init();
 window.map = Map;
 
-class Dashboard extends Component {
-  componentDidMount() {
-    const { getAllUserParcels } = this.props;
-    getAllUserParcels();
-  }
-
+class AdminDashboard extends Component {
   render() {
     let {
       menuActiveOverlayStatus,
@@ -45,10 +38,6 @@ class Dashboard extends Component {
                     <Switch>
                       <Route exact path='/dashboard' component={MakeOrder} />
                       <Route path='/dashboard/make-order' component={MakeOrder} />
-                      <Route exact path='/dashboard/orders' render={() => <OrdersList type='all' />} />
-                      <Route exact path='/dashboard/pending-orders' render={() => <OrdersList type='pending' />} />
-                      <Route exact path='/dashboard/delivered-orders' render={() => <OrdersList type='delivered' />} />
-                      <Route exact path='/dashboard/cancelled-orders' render={() => <OrdersList type='cancelled' />} />
                       <Route exact path='/dashboard/orders/:parcelId' component={ParcelEntry} />
                       <Route exact path='/dashboard/orders/edit/:parcelId' component={ParcelEntryEdit} />
                     </Switch>
@@ -81,8 +70,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     toggleMobileMenu: (visibility) => dispatch(toggleMobileMenu(visibility)),
-    getAllUserParcels: () => dispatch(getAllUserParcels()),
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(AdminDashboard);

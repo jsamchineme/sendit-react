@@ -7,8 +7,7 @@ class ParcelEntry extends Component {
 
   componentDidMount() {
     const { match: { params: { parcelId }}, fetchParcel } = this.props;
-    fetchParcel(parcelId);
-    
+    fetchParcel(parcelId); 
   }
 
   render() {

@@ -5,9 +5,12 @@ import LandingPage from './components/views/LandingPage';
 import LoginPage from './components/views/LoginPage';
 import SignupPage from './components/views/SignupPage';
 import SignupWelcome from './components/views/SignupWelcome';
+import NotFound from './components/views/NotFound';
 import Logout from './components/views/Logout';
 import Dashboard from './components/views/Dashboard';
 import configureStore from './redux/configureStore';
+import PrivateUserRoute from './components/views/PrivateUserRoute';
+import PrivateAdminRoute from './components/views/PrivateAdminRoute';
 
 const store = configureStore();
 
@@ -20,8 +23,10 @@ const App = () => {
           <Route path='/login' component={LoginPage} />
           <Route exact path='/signup' component={SignupPage} />
           <Route path='/signup/welcome' component={SignupWelcome} />
-          <Route path='/dashboard' component={Dashboard} />
+          <PrivateUserRoute path='/dashboard' component={Dashboard} />
+          <PrivateAdminRoute path='/admin-dashboard' component={Dashboard} />
           <Route path='/logout' component={Logout} />
+          <Route render={() => <NotFound />} />
         </Switch>
       </BrowserRouter>
     </Provider>

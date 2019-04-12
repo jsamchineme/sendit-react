@@ -3,16 +3,15 @@ import { connect } from 'react-redux';
 import OrderCreateForm from '../forms/OrderCreateForm';
 import { createOrder } from '../../redux/actions/parcel';
 
-class MakeOrder extends Component {
-
-  handleSubmit = (e) => {
+const MakeOrder = (props) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     let { 
       form: { orderCreate },
       createOrder,
       history
-    } = this.props;
+    } = props;
 
     const { values } = orderCreate;
     const onSuccess = (data) => {
@@ -20,35 +19,29 @@ class MakeOrder extends Component {
     }
     createOrder(values, onSuccess);
   }
-  
-  render() {
 
-    let { serverErrorMessage } = this.props;
+  let { serverErrorMessage } = props;
 
-    return (
-      <div>
-        <section className="page-section single">
-          <div className="header">
-            <div className="order-info heading">
-              <span>New Order </span>
+  return (
+    <div>
+      <section className="page-section single">
+        <div className="header">
+          <div className="order-info heading">
+            <span>New Order </span>
+          </div>
+        </div>
+        <div className="single-view">
+          <div className="container">
+            <div className="body row">
+              <OrderCreateForm
+                serverErrorMessage={serverErrorMessage}
+                handleSubmit={handleSubmit} />
             </div>
           </div>
-
-          <div className="single-view">
-            <div className="container">
-              <div className="body row">
-                
-                <OrderCreateForm
-                  serverErrorMessage={serverErrorMessage}
-                  handleSubmit={this.handleSubmit} />
-
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-    );
-  }
+        </div>
+      </section>
+    </div>
+  );
 }
 
 const mapStateToProps = state => ({

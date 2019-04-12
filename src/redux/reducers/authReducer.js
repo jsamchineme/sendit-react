@@ -1,13 +1,16 @@
 import { USER_LOGIN_SUCCESS, USER_LOGOUT, } from '../actionTypes';
-import { retrieveAuthUser } from '../../utils/localStorage';
+import { retrieveAuthUser, clearAuthUser } from '../../utils/localStorage';
+
+const authUser = retrieveAuthUser();
 
 const initialState = {
   isProcessing: false,
-  isAuthenticated: false,
-  authUser: retrieveAuthUser()
+  isAuthenticated: authUser === undefined ? false : true,
+  authUser,
 };
 
 const authReducer = (state = initialState, action) => {
+  let newState;
   switch(action.type) {
     case USER_LOGIN_SUCCESS:
       return {
@@ -16,11 +19,14 @@ const authReducer = (state = initialState, action) => {
         isAuthenticated: true
       };
      case USER_LOGOUT:
-      return {
+      newState = {
         ...state,
         isProcessing: false,
-        isAuthenticated: false
+        isAuthenticated: false,
       };
+      delete newState.authUser;
+      clearAuthUser();
+      return newState;
     default:
       return state;
   }

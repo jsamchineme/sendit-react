@@ -18,15 +18,15 @@ const BASE_URL = process.env.NODE_ENV === 'development' ?
 //   });
 // }
 
-// export const getUserParcels = (data) => {
-//   return fetch(`${BASE_URL}/users/${data.userId}/parcels?token=${data.token}`)
-//   .then(async res => { 
-//     if(!res.ok) {
-//       throw await ResponseException.prepare(res);
-//     }
-//     return res.json();
-//   });
-// }
+export const getUserParcels = (data) => {
+  return fetch(`${BASE_URL}/users/${data.userId}/parcels?token=${data.token}`)
+  .then(async res => { 
+    if(!res.ok) {
+      throw await ResponseException.prepare(res);
+    }
+    return res.json();
+  });
+}
 
 // export const getUserProfile = (data) => {
 //   return fetch(`${BASE_URL}/users/${data.userId}?token=${data.token}`)
@@ -187,38 +187,38 @@ export const editPresentLocation = (data, parcelId, token) => {
 //   })
 // };
 
-// // export const changePassword = (data, token) => {
-// //   return fetch(`${BASE_URL}/auth/reset`, {
-// //     credentials: 'same-origin',
-// //     method: 'PUT',
-// //     body: JSON.stringify(data),
-// //     headers: new Headers({
-// //       'Content-Type': 'application/json',
-// //       'x-access-token': token,
-// //     }),
-// //   })
-// //   .then(async res => { 
-// //     if(!res.ok) {
-// //       throw await ResponseException.prepare(res);
-// //     }
-// //     return res.json();
-// //   })
-// // };
+// export const changePassword = (data, token) => {
+//   return fetch(`${BASE_URL}/auth/reset`, {
+//     credentials: 'same-origin',
+//     method: 'PUT',
+//     body: JSON.stringify(data),
+//     headers: new Headers({
+//       'Content-Type': 'application/json',
+//       'x-access-token': token,
+//     }),
+//   })
+//   .then(async res => { 
+//     if(!res.ok) {
+//       throw await ResponseException.prepare(res);
+//     }
+//     return res.json();
+//   })
+// };
 
-// // export const createOrder = (data, token) => {
-// //   return fetch(`${BASE_URL}/parcels`, {
-// //     credentials: 'same-origin',
-// //     method: 'POST',
-// //     body: JSON.stringify(data),
-// //     headers: new Headers({
-// //       'Content-Type': 'application/json',
-// //       'x-access-token': token,
-// //     }),
-// //   })
-// //   .then(async res => { 
-// //     if(!res.ok) {
-// //       throw await ResponseException.prepare(res);
-// //     }
-// //     return res.json();
-// //   })
-// // };
+export const createOrder = (data, token) => {
+  return fetch(`${BASE_URL}/parcels`, {
+    credentials: 'same-origin',
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: new Headers({
+      'Content-Type': 'application/json',
+      'x-access-token': token,
+    }),
+  })
+  .then(async res => { 
+    if(!res.ok) {
+      throw await ResponseException.prepare(res);
+    }
+    return res.json();
+  })
+};

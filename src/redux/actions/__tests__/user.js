@@ -29,14 +29,14 @@ describe('Test cases for userLogin Action', () => {
 
   it('Should log in user with correct details', async () => {
     const store = createMockStore({});
-    const loginDetails = {
+    const loginData = {
       email: authUser.email,
       password: 'secretpass'
     };
 
     fetch.mockResponseOnce(JSON.stringify({data: authUser}));
     
-    await store.dispatch(userLogin(loginDetails));
+    await store.dispatch(userLogin(loginData));
 
     expect(fetch.mock.calls.length).toEqual(1);
     expect(fetch.mock.calls[0][0]).toEqual('https://johnnysam-sendit.herokuapp.com/api/v1/auth/login');
@@ -54,7 +54,7 @@ describe('Test cases for userLogin Action', () => {
 
   it('Should fail to login user with incorrect details', async () => {
     const store = createMockStore({});
-    const loginDetails = {
+    const loginData = {
       email: 'asdsdsd',
       password: 'secretpass'
     };
@@ -64,7 +64,7 @@ describe('Test cases for userLogin Action', () => {
 
     fetch.mockRejectOnce(response);
     
-    await store.dispatch(userLogin(loginDetails));
+    await store.dispatch(userLogin(loginData));
 
     expect(fetch.mock.calls.length).toEqual(1);
     expect(fetch.mock.calls[0][0]).toEqual('https://johnnysam-sendit.herokuapp.com/api/v1/auth/login');
@@ -90,14 +90,14 @@ describe('Test cases for userSignup Action', () => {
 
   it('Should signup user with correct details', async () => {
     const store = createMockStore({});
-    const signupDetails = {
+    const signupData = {
       email: authUser.email,
       password: 'secretpass'
     };
 
     fetch.mockResponseOnce(JSON.stringify({data: authUser}));
     
-    await store.dispatch(userSignup(signupDetails));
+    await store.dispatch(userSignup(signupData));
 
     expect(fetch.mock.calls.length).toEqual(1);
     expect(fetch.mock.calls[0][0]).toEqual('https://johnnysam-sendit.herokuapp.com/api/v1/auth/signup');
@@ -109,12 +109,11 @@ describe('Test cases for userSignup Action', () => {
       { type: USER_SIGNUP_SUCCESS, payload: authUser },
       { type: CLEAR_SERVER_ERROR, payload: { process: 'userSignup' } }
     ]);
-
   });
 
-  it('Should fail to login user with incorrect details', async () => {
+  it('Should fail to signup user with incorrect details', async () => {
     const store = createMockStore({});
-    const signupDetails = {
+    const signupData = {
       email: 'asdsdsd',
       password: 'secretpass'
     };
@@ -124,7 +123,7 @@ describe('Test cases for userSignup Action', () => {
 
     fetch.mockRejectOnce(response);
     
-    await store.dispatch(userSignup(signupDetails));
+    await store.dispatch(userSignup(signupData));
 
     expect(fetch.mock.calls.length).toEqual(1);
     expect(fetch.mock.calls[0][0]).toEqual('https://johnnysam-sendit.herokuapp.com/api/v1/auth/signup');
@@ -136,8 +135,6 @@ describe('Test cases for userSignup Action', () => {
       { type: USER_SIGNUP_FAILURE, payload: response.message  },
       { type: SHOW_SERVER_ERROR, payload: { message: response.message, process: 'userSignup' } }
     ]);
-  
-    // expect(AuthLocalStorage.persistAuthUser).toHaveBeenLastCalledWith(authUser);
   });
 })
 

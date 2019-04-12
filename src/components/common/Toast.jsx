@@ -4,7 +4,7 @@ class Toast extends React.Component {
   state = {
     message: '',
     type: 'success',
-    autoHide: () => null,
+    autoHide: true,
     hideAfter: () => null,
     toastActive: true,
     className: '',

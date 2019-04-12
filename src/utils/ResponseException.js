@@ -3,9 +3,9 @@ export default class ResponseException {
     // get response body as json
     let responseBody = await response.json();
     // get the api message returned
-    this.message = responseBody.message;
-    this.status = response.status;
+    ResponseException.message = responseBody.message;
+    ResponseException.status = response.status;
 
-    return this;
+    return ResponseException;
   }
 }
