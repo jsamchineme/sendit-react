@@ -1,12 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import ToastContainer from './Toast';
 
 const MainPageHeader = () => {
   const username = '';
 
   return (
     <div className="page-header row">
-      <div id="toast-place-holder" />
+      <ToastContainer />
       <div className="text">
         <div className="name">{username}</div>
       </div>

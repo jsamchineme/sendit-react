@@ -2,17 +2,17 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
-import LoginPage from '../LoginPage';
+import Dashboard from '../Dashboard';
 import configureStore from '../../../redux/configureStore';
 
 const store = configureStore();
 
-describe('Tests for login page', () => {
-  it('should render the login page', () => {
+describe('Tests for login form', () => {
+  it('should render the login form', () => {
     const subject = (
       <Provider store={store}>
         <BrowserRouter>
-          <Route render={() => <LoginPage />} />
+          <Route render={() => <Dashboard />} />
         </BrowserRouter>
       </Provider>
     );

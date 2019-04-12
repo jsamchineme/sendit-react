@@ -27,7 +27,7 @@ exports[`LandingPage should render correctly 1`] = `
           >
             <img
               alt="sendit-logo"
-              src="assets/img/sendit-pickup-ondemand.svg"
+              src="/assets/img/sendit-pickup-ondemand.svg"
             />
           </div>
           <div
@@ -54,7 +54,7 @@ exports[`LandingPage should render correctly 1`] = `
             >
               <img
                 alt="sendit landing introduction image"
-                src="assets/img/package-landing-image.jpg"
+                src="/assets/img/package-landing-image.jpg"
               />
             </div>
           </div>
@@ -108,7 +108,7 @@ exports[`LandingPage should render correctly 1`] = `
           >
             <img
               alt=""
-              src="assets/img/sendit-pickup-ondemand.svg"
+              src="/assets/img/sendit-pickup-ondemand.svg"
             />
           </div>
           <div
@@ -125,7 +125,7 @@ exports[`LandingPage should render correctly 1`] = `
           >
             <img
               alt=""
-              src="assets/img/sendit-timely-delivery.svg"
+              src="/assets/img/sendit-timely-delivery.svg"
             />
           </div>
           <div
@@ -142,7 +142,7 @@ exports[`LandingPage should render correctly 1`] = `
           >
             <img
               alt=""
-              src="assets/img/sendit-track-package.svg"
+              src="/assets/img/sendit-track-package.svg"
             />
           </div>
           <div

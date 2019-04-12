@@ -2,8 +2,7 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form';
 import { orderCreateRules } from './rules/formRules';
 
-
-const renderField = ({
+export const renderField = ({
   input,
   label,
   type,
@@ -113,6 +112,12 @@ const OrderCreateForm = props => {
   )
 }
 
-export default reduxForm({
+const Form = reduxForm({
   form: 'orderCreate'
-})(OrderCreateForm)
+})(OrderCreateForm);
+
+const OrderCreateFormContainer = () => {
+  return <Form />
+}
+
+export default OrderCreateFormContainer;

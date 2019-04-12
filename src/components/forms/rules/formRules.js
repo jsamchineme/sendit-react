@@ -35,3 +35,7 @@ export const orderCreateRules = {
   contactEmail: [required, email, minLength10, maxLength100],
   weight: [required, minLength1, maxLength100],
 }
+
+export const editDestinationRules = {
+  to: [minLength10, maxLength100],
+}

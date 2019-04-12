@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests for login form should render the login form 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "store": Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+        Symbol(observable): [Function],
+      },
+      "storeState": Object {
+        "auth": Object {
+          "isAuthenticated": false,
+          "isProcessing": false,
+        },
+        "elementStatuses": Object {
+          "menuActiveOverlayStatus": "",
+          "mobileMenuOpen": false,
+        },
+        "form": Object {},
+        "parcels": Array [],
+        "serverErrors": Object {
+          "userLogin": "",
+          "userSignup": "",
+        },
+      },
+    }
+  }
+>
+  <BrowserRouter>
+    <Route
+      render={[Function]}
+    />
+  </BrowserRouter>
+</ContextProvider>
+`;

@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import parcelStatuses from '../../constants/parcelStatuses';
 import DateFormater from '../../utils/DateFormater';
-import Map from './Map';
+import { renderField } from '../forms/OrderCreateForm';
+import DestinationEditForm from '../forms/DestinationEditForm';
 
-const SingleParcel = ({
+const SingleParcelEdit = ({
   description, 
   status, 
   sentOn, 
@@ -21,25 +22,39 @@ const SingleParcel = ({
   showMap,
   mapDisplayStatus,
   contactEmail = '',
-  contactPhone = ''
+  contactPhone = '',
+  handleEditSubmit
 }) => {
-  let mapViewButton = '';
+  let mapViewButton = '';    
   if(!window.mapReady) {
-    // mapViewButton = status !== 'cancelled' ? 
-    //   <button className="btn medium-btn bg-light-orange" onClick={() => showMap()}>View on the map</button>
-    //   : '';
+    mapViewButton = status !== 'cancelled' ? 
+      <a href="#map-modal" className="btn medium-btn bg-light-orange">View on the map</a>
+      : '';
   }
-  
+
   // allow order cancelling only if status is neither 'cancelled' nor 'delivered'
-  let cancelOrderButton = status !== 'cancelled' && status !== 'delivered' ? 
-    <button className="btn danger medium-btn cancel-order">Cancel Order</button>
+  let cancelOrderButton = status !== 'cancelled' && status !== 'delivered'  ? 
+    <button className="btn danger medium-btn cancel-order" data-parcel-id='${id}'>Cancel Order</button>
     : '';
-  
+
   // allow editing destination only if status is neither 'cancelled' nor 'delivered'
-  let editOrderButton = status !== 'cancelled' && status !== 'delivered' ? 
-      <NavLink className="btn medium-btn bg-light-orange" to={`/dashboard/orders/edit/${id}`}>Edit Order</NavLink>
-    : '';
-  
+  let toSection = status !== 'cancelled' && status !== 'delivered' ? 
+    <div className="item">
+      <div className="field">Delivery Location</div>
+      <div className="value">
+        <DestinationEditForm value={to}/>
+        <br />
+        <button className='btn small-btn save-edit' onClick={handleEditSubmit}>Save</button>
+        <NavLink className="btn small-btn" to={`/dashboard/orders/${id}`}>View</NavLink>
+      </div>
+    </div>
+    : <div className="item">
+        <div className="field">Delivery Location</div>
+        <div className="value">
+          {to}
+        </div>
+      </div>;
+
   let parcelStatus = parcelStatuses[status];
   sentOn = DateFormater.formatDate(sentOn);
   contactEmail = contactEmail === null || contactEmail === undefined ? 'Not Provided' : contactEmail;
@@ -68,20 +83,17 @@ const SingleParcel = ({
           <div className="body row">
             <div className="info-sections column col-5">
               <div className="item">
-                <div className="field">Present Location</div>
+                <div className="field">Present Location </div>
                 <div className="value">
                   {currentLocation}
                 </div>
                 <div className="actions">
-                  {mapViewButton}
+                  {/* <!-- {mapViewButton} --> */}
                 </div>
               </div>
-              <div className="item">
-                <div className="field">Delivery Location</div>
-                <div className="value">
-                  {to}
-                </div>
-              </div>
+
+              {toSection}
+
               <div className="item">
                 <div className="field">Pickup Location</div>
                 <div className="value">
@@ -114,7 +126,6 @@ const SingleParcel = ({
               </div>
               <div className="item actions">
                 {cancelOrderButton}
-                {editOrderButton}
               </div>
             </div>
             <div className="map-view column col-7">
@@ -135,4 +146,4 @@ const mapStateToProps = state => ({
   mapDisplayStatus: state.elementStatuses.mapDisplayStatus || true,
 });
 
-export default connect(mapStateToProps)(SingleParcel);
+export default connect(mapStateToProps)(SingleParcelEdit);
