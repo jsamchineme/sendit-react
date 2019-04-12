@@ -27,8 +27,8 @@ export const renderField = ({
 }
 
 
-const OrderCreateForm = props => {
-  const { handleSubmit, serverErrorMessage, pristine, reset, submitting } = props;
+export const OrderCreateForm = props => {
+  const { handleSubmit, serverErrorMessage } = props;
 
   return (
     <form className="create-order-form" onSubmit={handleSubmit}>
@@ -116,8 +116,8 @@ const Form = reduxForm({
   form: 'orderCreate'
 })(OrderCreateForm);
 
-const OrderCreateFormContainer = () => {
-  return <Form />
+const OrderCreateFormContainer = (props) => {
+  return <Form {...props} />
 }
 
 export default OrderCreateFormContainer;

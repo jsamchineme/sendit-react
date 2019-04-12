@@ -1,21 +1,137 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tests for login form should render the login form 1`] = `
-<ReduxForm
-  destroyOnUnmount={true}
-  enableReinitialize={false}
-  forceUnregisterOnUnmount={false}
-  form="orderCreate"
-  getFormState={[Function]}
-  keepDirtyOnReinitialize={false}
-  persistentSubmitErrors={false}
-  pure={true}
-  shouldAsyncValidate={[Function]}
-  shouldError={[Function]}
-  shouldValidate={[Function]}
-  shouldWarn={[Function]}
-  touchOnBlur={true}
-  touchOnChange={false}
-  updateUnregisteredFields={false}
-/>
+<form
+  className="create-order-form"
+  onSubmit={[MockFunction]}
+>
+  <div
+    className="info-sections column col-7"
+  >
+    <div
+      className="item"
+    />
+    <Field
+      className="line-input"
+      component={[Function]}
+      label="Pickup Location"
+      name="from"
+      placeholder="Provide Pickup location"
+      type="text"
+      validate={
+        Array [
+          [Function],
+          [Function],
+          [Function],
+        ]
+      }
+    />
+    <Field
+      className="line-input"
+      component={[Function]}
+      label="Delivery Location"
+      name="to"
+      placeholder="Provide delivery location"
+      type="text"
+      validate={
+        Array [
+          [Function],
+          [Function],
+          [Function],
+        ]
+      }
+    />
+    <Field
+      className="line-input"
+      component={[Function]}
+      label="Present Location"
+      name="currentLocation"
+      placeholder="Provide your present location"
+      type="text"
+      validate={
+        Array [
+          [Function],
+          [Function],
+          [Function],
+        ]
+      }
+    />
+    <Field
+      className="line-input"
+      component={[Function]}
+      label="Receiver's phone"
+      name="contactPhone"
+      placeholder="Receiver's phone"
+      type="text"
+      validate={
+        Array [
+          [Function],
+          [Function],
+          [Function],
+        ]
+      }
+    />
+    <Field
+      className="line-input"
+      component={[Function]}
+      label="Receiver's email"
+      name="contactEmail"
+      placeholder="Receiver's email"
+      type="email"
+      validate={
+        Array [
+          [Function],
+          [Function],
+          [Function],
+          [Function],
+        ]
+      }
+    />
+    <Field
+      className="line-input"
+      component={[Function]}
+      label="Parcel Description"
+      name="description"
+      placeholder="Provide brief description"
+      type="textarea"
+      validate={
+        Array [
+          [Function],
+          [Function],
+        ]
+      }
+    />
+    <Field
+      className="line-input"
+      component={[Function]}
+      label="Approximate weight of the parcel"
+      name="weight"
+      placeholder="Provide the approximate weight of the parcel"
+      type="text"
+      validate={
+        Array [
+          [Function],
+          [Function],
+          [Function],
+        ]
+      }
+    />
+    <div
+      className="item actions"
+    >
+      <button
+        className="btn bg-light-orange medium-btn"
+      >
+        Create Order
+      </button>
+    </div>
+    <div
+      className="images column col-5"
+    >
+      <div
+        className="image"
+      />
+    </div>
+  </div>
+</form>
 `;

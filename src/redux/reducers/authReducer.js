@@ -1,8 +1,10 @@
 import { USER_LOGIN_SUCCESS, USER_LOGOUT, } from '../actionTypes';
+import { retrieveAuthUser } from '../../utils/localStorage';
 
 const initialState = {
   isProcessing: false,
-  isAuthenticated: false
+  isAuthenticated: false,
+  authUser: retrieveAuthUser()
 };
 
 const authReducer = (state = initialState, action) => {

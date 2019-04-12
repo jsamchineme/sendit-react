@@ -23,8 +23,8 @@ const renderField = ({
 }
 
 
-const LoginForm = props => {
-  const { handleSubmit, serverErrorMessage, pristine, reset, submitting } = props;
+export const LoginForm = props => {
+  const { handleSubmit, serverErrorMessage } = props;
   return (
     <form onSubmit={handleSubmit}>
       <div className="form-header">

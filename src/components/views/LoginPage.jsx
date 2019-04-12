@@ -4,7 +4,7 @@ import LoginForm from '../forms/LoginForm';
 import { connect } from 'react-redux';
 import { userLogin } from '../../redux/actions/user';
 
-const LoginPage = ({
+export const LoginPage = ({
   form: { loginForm },
   userLogin,
   history,

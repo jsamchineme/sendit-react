@@ -21,7 +21,7 @@ export const renderField = ({
   )
 }
 
-const Form = ({
+export const Form = ({
   handleSubmit
 }) => (
   <form onSubmit={handleSubmit}>
@@ -41,7 +41,7 @@ const EditForm = reduxForm({
   form: 'destinationEdit',
 })(Form);
 
-const DestinationEditContainer = props => {
+export const DestinationEditContainer = props => {
   const { handleSubmit, value } = props;
   return (
     <EditForm
