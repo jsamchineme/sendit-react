@@ -4,7 +4,10 @@ import thunk from 'redux-thunk';
 import { userLogin, userSignup } from '../user';
 import { 
   USER_LOGIN_REQUEST, 
-  USER_LOGIN_SUCCESS, 
+  USER_LOGIN_SUCCESS,
+  USER_SIGNUP_FAILURE,
+  USER_SIGNUP_REQUEST,
+  USER_SIGNUP_SUCCESS, 
   CLEAR_SERVER_ERROR, 
   USER_LOGIN_FAILURE,
   SHOW_SERVER_ERROR,
@@ -97,17 +100,16 @@ describe('Test cases for userSignup Action', () => {
     await store.dispatch(userSignup(signupDetails));
 
     expect(fetch.mock.calls.length).toEqual(1);
-    expect(fetch.mock.calls[0][0]).toEqual('https://johnnysam-sendit.herokuapp.com/api/v1/auth/login');
+    expect(fetch.mock.calls[0][0]).toEqual('https://johnnysam-sendit.herokuapp.com/api/v1/auth/signup');
   
     const actions = store.getActions();
   
     expect(actions).toEqual([
-      { type: USER_LOGIN_REQUEST },
-      { type: USER_LOGIN_SUCCESS, payload: authUser },
-      { type: CLEAR_SERVER_ERROR, payload: { process: 'userLogin' } }
+      { type: USER_SIGNUP_REQUEST },
+      { type: USER_SIGNUP_SUCCESS, payload: authUser },
+      { type: CLEAR_SERVER_ERROR, payload: { process: 'userSignup' } }
     ]);
-  
-    expect(AuthLocalStorage.persistAuthUser).toHaveBeenLastCalledWith(authUser);
+
   });
 
   it('Should fail to login user with incorrect details', async () => {
@@ -135,7 +137,7 @@ describe('Test cases for userSignup Action', () => {
       { type: SHOW_SERVER_ERROR, payload: { message: response.message, process: 'userSignup' } }
     ]);
   
-    expect(AuthLocalStorage.persistAuthUser).toHaveBeenLastCalledWith(authUser);
+    // expect(AuthLocalStorage.persistAuthUser).toHaveBeenLastCalledWith(authUser);
   });
 })
 
